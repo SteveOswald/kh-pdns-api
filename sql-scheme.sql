@@ -1,0 +1,64 @@
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+CREATE TABLE `domain` (
+  `id` int(32) NOT NULL,
+  `server_id` int(32) NOT NULL,
+  `name` varchar(128) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+CREATE TABLE `server` (
+  `id` int(32) NOT NULL,
+  `hostname` varchar(128) NOT NULL,
+  `api_key` varchar(512) NOT NULL,
+  `localhost` tinyint(1) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+CREATE TABLE `user` (
+  `id` int(32) NOT NULL,
+  `username` varchar(128) NOT NULL,
+  `mail` varchar(128) NOT NULL,
+  `api_key` varchar(128) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+CREATE TABLE `user_domain` (
+  `id` int(32) NOT NULL,
+  `user_id` int(32) NOT NULL,
+  `domain_id` int(32) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+ALTER TABLE `domain`
+  ADD PRIMARY KEY (`id`);
+
+ALTER TABLE `server`
+  ADD PRIMARY KEY (`id`);
+
+ALTER TABLE `user`
+  ADD PRIMARY KEY (`id`);
+
+ALTER TABLE `user_domain`
+  ADD PRIMARY KEY (`id`);
+
+ALTER TABLE `domain`
+  MODIFY `id` int(32) NOT NULL AUTO_INCREMENT;
+
+ALTER TABLE `server`
+  MODIFY `id` int(32) NOT NULL AUTO_INCREMENT;
+
+ALTER TABLE `user`
+  MODIFY `id` int(32) NOT NULL AUTO_INCREMENT;
+
+ALTER TABLE `user_domain`
+  MODIFY `id` int(32) NOT NULL AUTO_INCREMENT;
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
