@@ -1,0 +1,38 @@
+{
+    "name": "leafs/db",
+    "description": "Leaf PHP db module.",
+    "keywords": [
+        "database",
+        "orm",
+        "leaf",
+        "php",
+        "framework"
+    ],
+    "homepage": "https://leafphp.netlify.app/#/",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Michael Darko",
+            "email": "mickdd22@gmail.com",
+            "homepage": "https://mychi.netlify.app",
+            "role": "Developer"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Leaf\\": "src"
+        },
+        "files": [
+			"src/functions.php"
+		]
+    },
+    "minimum-stability": "dev",
+	"prefer-stable": true,
+    "require": {
+        "ext-mysqli": "*"
+    },
+    "require-dev": {
+        "pestphp/pest": "^1.21"
+    }
+}
