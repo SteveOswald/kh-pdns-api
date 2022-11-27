@@ -12,5 +12,5 @@ kh-pdns-api provides a PowerDNS compatible API for KeyHelp.
 - Control the access of the users to the domains via the table "user_domain".
 
 # Legal
-KeyHelp is a trademark of Keyweb AG
+KeyHelp is a trademark of Keyweb AG 
 PowerDNS is a trademark of PowerDNS.COM BV
