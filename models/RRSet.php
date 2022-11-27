@@ -58,7 +58,10 @@ class RRSet {
 
         $output->name = $zoneRequestRRSet->name;
         $output->type = $zoneRequestRRSet->type;
-        $output->ttl = $zoneRequestRRSet->ttl;
+      
+      	if (property_exists($zoneRequestRRSet, "ttl")) {
+            $output->ttl = $zoneRequestRRSet->ttl;
+        }
 
         if (property_exists($zoneRequestRRSet, "changetype")) {
             $output->changetype = $zoneRequestRRSet->changetype;

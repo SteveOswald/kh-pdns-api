@@ -90,6 +90,8 @@ app()->patch($API_PREFIX . "/servers/{server_id}/zones/{zone_id}", function ($se
   
     $records = getRecordsFromDomainNameAndZoneRequestAndKeyHelpDnsEntry($keyHelpDomainName, json_decode($input), $keyHelpDnsEntry);
 
+  	//response()->exit(json_encode($records), 200);
+  
     keyHelp_putDns($server["hostname"], $server["api_key"], $domainId, $records);
   
     response()->plain("", 204);

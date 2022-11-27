@@ -56,6 +56,10 @@ function getRecordsFromDomainNameAndZoneRequestAndKeyHelpDnsEntry($domainName, $
     if(count($keyHelpRecords) > 0) {
         for ($i = 0; $i < count($keyHelpRecords); $i++) {
             $currentKeyHelpRecord = $keyHelpRecords[$i];
+          
+            if ($currentKeyHelpRecord->type == "SOA") {
+            	continue;  
+            }
 
             $changedRecordIndex = getRecordIndexForNameAndType($changedRecords, $currentKeyHelpRecord->name, $currentKeyHelpRecord->type);
 
@@ -69,6 +73,10 @@ function getRecordsFromDomainNameAndZoneRequestAndKeyHelpDnsEntry($domainName, $
                         $newRecord->ttl = $changedRecord->ttl;
                         $newRecord->type = $changedRecord->type;
                         $newRecord->value = $changedRecord->records[$x]->content;
+                      
+                      	if ($newRecord->host == "") {
+                        	$newRecord->host = "@";  
+                        }
 
                         $output->records->other[] = $newRecord;
                     }
@@ -82,6 +90,10 @@ function getRecordsFromDomainNameAndZoneRequestAndKeyHelpDnsEntry($domainName, $
                     $newRecord->ttl = $currentKeyHelpRecord->ttl;
                     $newRecord->type = $currentKeyHelpRecord->type;
                     $newRecord->value = $currentKeyHelpRecord->records[$x]->content;
+                  
+                    if ($newRecord->host == "") {
+                    	$newRecord->host = "@";  
+                    }
 
                     $output->records->other[] = $newRecord;
                 }
@@ -97,6 +109,10 @@ function getRecordsFromDomainNameAndZoneRequestAndKeyHelpDnsEntry($domainName, $
                 $newRecord->ttl = $changedRecord->ttl;
                 $newRecord->type = $changedRecord->type;
                 $newRecord->value = $changedRecord->records[$x]->content;
+              
+                if ($newRecord->host == "") {
+                	$newRecord->host = "@";  
+                }
 
                 $output->records->other[] = $newRecord;
             }
